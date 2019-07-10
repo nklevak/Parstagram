@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -15,17 +16,27 @@ import java.util.List;
 public class FeedActivity extends AppCompatActivity {
 
     ArrayList<Post> posts;
+    RecyclerView rvFeed;
+//    PostAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
-
-        // get 20 most recent posts
-        posts = new ArrayList<>();
-        queryPosts();
-
-
+//
+//        // get 20 most recent posts
+//        posts = new ArrayList<>();
+//
+//        // initialize adapter
+//        adapter = new PostAdapter(posts);
+//
+//        // find the RecyclerView
+//        rvFeed = findViewById(R.id.rvFeed);
+//
+//        // recycler view setup
+//        rvFeed.setLayoutManager(new LinearLayoutManager(this));
+//        rvFeed.setAdapter(adapter);
+//        queryPosts();
     }
 
     private void queryPosts() {
@@ -44,8 +55,12 @@ public class FeedActivity extends AppCompatActivity {
                     return;
                 }
                 // add posts to list
+                Post curr;
                 for (int i = 0; i < postsQ.size(); i++) {
-                    posts.add(postsQ.get(i));
+                    curr = postsQ.get(i);
+                    if (!posts.contains(curr)) {
+                        posts.add(curr);
+                    }
                 }
                 Log.d("ComposeActivity", "number of posts: " + posts.size());
             }
