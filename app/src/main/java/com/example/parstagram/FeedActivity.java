@@ -22,7 +22,7 @@ public class FeedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+//        setContentView(R.layout.activity_feed);
 //
 //        // get 20 most recent posts
 //        posts = new ArrayList<>();

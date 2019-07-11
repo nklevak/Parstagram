@@ -57,7 +57,7 @@ public class SignupActivity extends AppCompatActivity {
                             Log.d("LoginActivityForSignup", "Signup successful");
 
                             // navigate to home page
-                            Intent intent = new Intent (SignupActivity.this, HomeActivity.class);
+                            Intent intent = new Intent (SignupActivity.this, ComposeActivity.class);
                             startActivity(intent);
 
                             // have to finish log in so that user cant just log out by clicking back

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
             // set current user and go to home page
-            Intent i = new Intent(MainActivity.this, HomeActivity.class);
+            Intent i = new Intent(MainActivity.this, ComposeActivity.class);
             startActivity(i);
         }
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("LoginActivity", "Login successful");
 
                     // navigate to home page
-                    Intent intent = new Intent (MainActivity.this, HomeActivity.class);
+                    Intent intent = new Intent (MainActivity.this, ComposeActivity.class);
                     startActivity(intent);
 
                     // have to finish log in so that user cant just log out by clicking back
