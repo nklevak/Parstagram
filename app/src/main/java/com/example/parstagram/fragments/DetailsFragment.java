@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.parstagram.Post;
 import com.example.parstagram.R;
 import com.parse.ParseFile;
@@ -21,6 +22,7 @@ public class DetailsFragment extends Fragment {
     // instance vars
     private ImageView ivProfile;
     private TextView tvHandle;
+    private TextView tvHandleTwo;
     private TextView tvCaption;
     private TextView tvTime;
     private ImageView ivImage;
@@ -41,6 +43,7 @@ public class DetailsFragment extends Fragment {
         tvCaption = view.findViewById(R.id.tvCaption);
         tvTime = view.findViewById(R.id.tvTime);
         ivImage = view.findViewById(R.id.ivImage);
+        tvHandleTwo = view.findViewById(R.id.tvHandleTwo);
 
         // get back post
         Bundle extras = getArguments();
@@ -49,6 +52,7 @@ public class DetailsFragment extends Fragment {
         // find user and set handle
         ParseUser user = post.getUser();
         tvHandle.setText(user.getUsername());
+        tvHandleTwo.setText("@" + user.getUsername());
         tvCaption.setText(post.getCaption());
         tvTime.setText(post.getCreatedAt().toString()); // fix date formstting
         if (post.getImage() != null) {
@@ -62,11 +66,13 @@ public class DetailsFragment extends Fragment {
             if (profile != null) {
                 Glide.with(getContext())
                         .load(profile.getUrl())
+                        .apply(RequestOptions.circleCropTransform())
                         .into(ivProfile);
             }
             else {
                 Glide.with(getContext())
-                        .load("@drawable/icon.png")
+                        .load("@drawable/user.png")
+                        .apply(RequestOptions.circleCropTransform())
                         .into(ivProfile);
             }
     }

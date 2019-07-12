@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FeedActivity"></activity>
         <activity android:name=".ComposeActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".MainActivity">

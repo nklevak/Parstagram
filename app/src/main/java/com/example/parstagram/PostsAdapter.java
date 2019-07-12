@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -64,46 +65,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
                 Intent intent = new Intent(context, ComposeActivity.class);
                 intent.putExtra("POST", post);
-//                intent.putExtra("method", "details");
                 context.startActivity(intent);
-
-//                // create a fragment
-//                Fragment fragment = new DetailsFragment();
-//
-//                // add post information to fragment
-//                Bundle info = new Bundle();
-//                info.putParcelable("POST", post);
-//                fragment.setArguments(info);
-//
-//                // start new fragment
-
-
-//                // create an intent to display the additional info activity
-//                // an intent sends out a broadcast that you want something from a different part of the app
-//                Intent intent = new Intent(context, com.example.flixster.MovieDetailsActivity.class);
-//                // .putExtra() sends additional data with the intent
-//                intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
-//                // starts activity
-//                context.startActivity(intent);
             }
-//            Fragment fragment;
-//            switch (item.getItemId()) {
-//                case R.id.action_compose:
-//                    fragment = new ComposeFragment();
-//                    Toast.makeText(getApplicationContext(), "compose!", Toast.LENGTH_LONG).show();
-//                    break;
-//                case R.id.action_profile:
-//                    fragment = new ProfileFragment();
-//                    Toast.makeText(getApplicationContext(), "profile!", Toast.LENGTH_LONG).show();
-//                    break;
-//                case R.id.action_home:
-//                default:
-//                    fragment = new FeedFragment();
-//                    Toast.makeText(getApplicationContext(), "feed!", Toast.LENGTH_LONG).show();
-//                    break;
-//            }
-//            fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
-//            return true;
         }
 
         public ViewHolder(@NonNull View item) {
@@ -136,11 +99,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             if (profile != null) {
                 Glide.with(context)
                         .load(profile.getUrl())
+                        .apply(RequestOptions.circleCropTransform())
+
                         .into(ivProfile);
             }
             else {
                 Glide.with(context)
-                        .load("@drawable/icon.png")
+                        .load("@drawable/user.png")
+                        .apply(RequestOptions.circleCropTransform())
                         .into(ivProfile);
             }
         }

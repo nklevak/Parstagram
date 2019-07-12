@@ -5,4 +5,10 @@
     <color name="colorAccent">#D81B60</color>
     <color name="red">#FB3958</color>
     <color name ="green">#6DC993</color>
+    <color name = "violet">#8a3ab9</color>
+    <color name = "redorange">#e95950</color>
+    <color name = "maroon">#cd486b</color>
+    <color name = "yellow">#fccc63</color>
+    <color name = "white">#ffffff </color>
+    <color name = "black">#000000</color>
 </resources>

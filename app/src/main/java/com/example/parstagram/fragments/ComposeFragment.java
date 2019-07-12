@@ -65,6 +65,9 @@ public class ComposeFragment extends Fragment {
         etCaption = view.findViewById(R.id.etCaption);
         ivPicture = view.findViewById(R.id.ivPicture);
 
+        // set ivPicture to invisible
+        ivPicture.setVisibility(View.GONE);
+
 
         // take picture when user elects to
         btnPicture.setOnClickListener(new View.OnClickListener(){
@@ -88,8 +91,6 @@ public class ComposeFragment extends Fragment {
                 savePost(caption, user, photoFile);
             }
         });
-
-
     }
 
     private void launchCamera() {
@@ -109,6 +110,7 @@ public class ComposeFragment extends Fragment {
         if (intent.resolveActivity(getContext().getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+
         }
     }
 
@@ -157,6 +159,8 @@ public class ComposeFragment extends Fragment {
                     fos.close();
                     // Load the taken image into a preview
                     ivPicture.setImageBitmap(takenImage);
+                    // set image to visible
+                    ivPicture.setVisibility(View.VISIBLE);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

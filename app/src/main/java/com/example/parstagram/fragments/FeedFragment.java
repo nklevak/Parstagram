@@ -57,7 +57,6 @@ public class FeedFragment extends Fragment {
         // query posts
         queryPosts();
 
-        // JUST ADDED FOR SWIPE TO REFRESH
         // Lookup the swipe container view
         swipeContainer = view.findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
@@ -85,7 +84,7 @@ public class FeedFragment extends Fragment {
         postQuery.include(Post.KEY_USER);
         // since it's an expensive operation you want to do this in a background thread not in the
         // same thread as the UI
-        postQuery.orderByDescending("created_at");
+        postQuery.orderByDescending("createdAt");
         postQuery.setLimit(20);
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
@@ -95,12 +94,6 @@ public class FeedFragment extends Fragment {
                     e.printStackTrace();
                     return;
                 }
-                // add posts to list
-//                for (int i = 0; i < postsQ.size(); i++) {
-//                    posts.add(posts.size() , postsQ.get(i));
-//                    adapter.notifyItemInserted(posts.size() - 1);
-//                }
-                // ADDING IN REVERSE FOR SOME REASON
                 posts.addAll(postsQ);
                 adapter.notifyDataSetChanged();
                 Log.d("ComposeActivity", "number of posts: " + posts.size());

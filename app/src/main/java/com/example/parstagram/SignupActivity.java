@@ -49,6 +49,8 @@ public class SignupActivity extends AppCompatActivity {
 
                 // Set custom properties
                 user.put("handle", etHandle.getText().toString());
+//                File userPic = getPhotoFileUri("user.png");
+//                user.put("profile", new ParseFile(userPic));
 
                 // Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
@@ -75,7 +77,6 @@ public class SignupActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 
 
